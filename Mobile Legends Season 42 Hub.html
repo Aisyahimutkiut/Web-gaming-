@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLBB Season 42 Hub - Counter Hero & Meta Guide</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        mlbb: {
+                            dark: '#0B0F19',
+                            card: '#131C31',
+                            accent: '#38BDF8',
+                            purple: '#A855F7',
+                            gold: '#FACC15',
+                            border: '#1E293B'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body {
+            background-color: #0B0F19;
+            color: #F8FAFC;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .neon-glow {
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+        }
+
+        .neon-glow-purple {
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.3);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(13, 22, 41, 0.95) 0%, rgba(19, 28, 49, 0.9) 100%);
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #38BDF8, #A855F7, #FACC15);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0F19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38BDF8;
+        }
+    </style>
+</head>
+<body class="bg-mlbb-dark min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-white">
+
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-mlbb-dark/80 border-b border-mlbb-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-purple-600 flex items-center justify-center neon-glow">
+                    <i class="fa-solid fa-gamepad text-white text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-black tracking-wider text-gradient">MLBB S42</span>
+                    <span class="block text-xs text-slate-400 font-medium">HUB & COUNTER GUIDE</span>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-300">
+                <a href="#hero" class="hover:text-cyan-400 transition">Beranda</a>
+                <a href="#counters" class="hover:text-cyan-400 transition">Counter Hero</a>
+                <a href="#tierlist" class="hover:text-cyan-400 transition">Tier List S42</a>
+                <a href="#download" class="hover:text-cyan-400 transition">Download App</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="https://www.tiktok.com/@villains_starboy?" target="_blank" class="hidden sm:flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-xl border border-slate-700 transition text-sm font-medium">
+                    <i class="fa-brands fa-tiktok text-cyan-400"></i>
+                    <span>@villains_starboy</span>
+                </a>
+                <button onclick="openDownloadModal()" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-5 py-2.5 rounded-xl font-bold shadow-lg shadow-cyan-500/25 transition transform hover:-translate-y-0.5 text-sm flex items-center space-x-2">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Download App</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero" class="relative overflow-hidden py-16 md:py-24 border-b border-mlbb-border">
+        <!-- Background Glow Orbs -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-cyan-500/10 blur-[120px] pointer-events-none rounded-full"></div>
+        <div class="absolute bottom-0 right-10 w-[400px] h-[300px] bg-purple-600/10 blur-[120px] pointer-events-none rounded-full"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold uppercase tracking-widest">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                        <span>Official Season 42 Patch Update</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-none">
+                        DOMINASI <span class="text-gradient">SEASON 42</span> DENGAN META TERBARU
+                    </h1>
+                    
+                    <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0">
+                        Temukan daftar lengkap counter hero, analisis tier list patch terbaru, dan trik jitu Mythic Glory langsung dari pro player bersama <strong class="text-white">Villains Starboy</strong>.
+                    </p>
+                    
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <button onclick="openDownloadModal()" class="bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:opacity-95 text-white px-8 py-4 rounded-2xl font-bold shadow-xl shadow-cyan-500/30 transition transform hover:-translate-y-1 flex items-center space-x-3 text-base">
+                            <i class="fa-solid fa-cloud-arrow-down text-xl"></i>
+                            <span>Download Web Gaming S42 (APK/PWA)</span>
+                        </button>
+                        <a href="#counters" class="bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-slate-700 px-6 py-4 rounded-2xl font-semibold transition text-base flex items-center space-x-2">
+                            <i class="fa-solid fa-shield-halved text-cyan-400"></i>
+                            <span>Cari Counter Hero</span>
+                        </a>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-800 text-center lg:text-left">
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-black text-white">120+</div>
+                            <div class="text-xs text-slate-400">Hero Database</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-black text-cyan-400">100%</div>
+                            <div class="text-xs text-slate-400">Akurat & Terupdate</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-black text-purple-400">50K+</div>
+                            <div class="text-xs text-slate-400">Pengguna Aktif</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-cyan-500 via-purple-600 to-yellow-500 opacity-30 blur-xl"></div>
+                        <div class="relative hero-gradient border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
+                            <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400">
+                                        <i class="fa-solid fa-crown text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-lg text-white">Featured Creator</h3>
+                                        <p class="text-xs text-slate-400">TikTok @villains_starboy</p>
+                                    </div>
+                                </div>
+                                <span class="px-3 py-1 bg-green-500/10 text-green-400 border border-green-500/30 rounded-full text-xs font-bold">LIVE META</span>
+                            </div>
+
+                            <div class="py-6 space-y-4">
+                                <div class="flex items-center justify-between bg-slate-900/60 p-3.5 rounded-xl border border-slate-800">
+                                    <span class="text-sm font-medium text-slate-300">Top Ban Season 42</span>
+                                    <span class="text-sm font-bold text-red-400 flex items-center space-x-1"><i class="fa-solid fa-ban mr-1"></i> Nolan, Zhuxin, Cici</span>
+                                </div>
+                                <div class="flex items-center justify-between bg-slate-900/60 p-3.5 rounded-xl border border-slate-800">
+                                    <span class="text-sm font-medium text-slate-300">Meta Pick Utama</span>
+                                    <span class="text-sm font-bold text-cyan-400">Fighter & Utility Jungler</span>
+                                </div>
+                                <div class="flex items-center justify-between bg-slate-900/60 p-3.5 rounded-xl border border-slate-800">
+                                    <span class="text-sm font-medium text-slate-300">Patch Version</span>
+                                    <span class="text-sm font-bold text-purple-400">v1.8.98 S42 Edition</span>
+                                </div>
+                            </div>
+
+                            <a href="https://www.tiktok.com/@villains_starboy?" target="_blank" class="w-full bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 text-white font-bold py-3.5 px-4 rounded-xl transition flex items-center justify-center space-x-2 shadow-lg">
+                                <i class="fa-brands fa-tiktok text-lg"></i>
+                                <span>Kunjungi TikTok Resmi</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="counters" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+            <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white">
+                DAFTAR <span class="text-gradient">COUNTER HERO</span> S42
+            </h2>
+            <p class="text-slate-400 text-sm sm:text-base">
+                Jangan takut kalah di Ranked! Cari hero musuh di bawah ini dan temukan hero counter terbaik beserta alasan pemilihannya.
+            </p>
+        </div>
+
+        <!-- Search & Filter Controls -->
+        <div class="bg-mlbb-card border border-mlbb-border rounded-2xl p-4 sm:p-6 mb-8 shadow-xl">
+            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                <!-- Search Bar -->
+                <div class="relative w-full md:w-96">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" id="searchInput" oninput="filterHeroes()" placeholder="Cari nama hero (contoh: Fanny, Ling, Chou)..." class="w-full bg-slate-900 border border-slate-700 text-white text-sm rounded-xl pl-11 pr-4 py-3 focus:outline-none focus:border-cyan-500 transition">
+                </div>
+
+                <!-- Role Filters -->
+                <div class="flex flex-wrap gap-2 w-full md:w-auto justify-start md:justify-end" id="roleFilters">
+                    <button onclick="setRoleFilter('All')" class="role-btn active px-4 py-2 rounded-xl text-xs font-bold bg-cyan-500 text-white transition shadow-md">Semua</button>
+                    <button onclick="setRoleFilter('Assassin')" class="role-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Assassin</button>
+                    <button onclick="setRoleFilter('Mage')" class="role-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Mage</button>
+                    <button onclick="setRoleFilter('Marksman')" class="role-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Marksman</button>
+                    <button onclick="setRoleFilter('Fighter')" class="role-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Fighter</button>
+                    <button onclick="setRoleFilter('Tank')" class="role-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Tank</button>
+                    <button onclick="setRoleFilter('Support')" class="role-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Support</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Counter Grid -->
+        <div id="heroGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamic JavaScript Content insertion -->
+        </div>
+    </section>
+
+    <section id="tierlist" class="py-16 bg-mlbb-card/40 border-y border-mlbb-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white">
+                    META <span class="text-gradient">TIER LIST</span> S42
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Daftar hero prioritas draft pick untuk push rank ke Mythic Glory dengan cepat dan konsisten.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <!-- S Tier -->
+                <div class="bg-mlbb-card border border-red-500/30 rounded-2xl p-5 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-red-500 text-white font-black text-xs px-3 py-1 rounded-bl-xl">S+ TIER</div>
+                    <h3 class="font-extrabold text-lg text-red-400 mb-2 flex items-center"><i class="fa-solid fa-fire mr-2"></i> OP / Prioritas Ban</h3>
+                    <p class="text-xs text-slate-400 mb-4">Hero dengan impact tertinggi di turnamen dan ranked match.</p>
+                    <div class="space-y-2.5">
+                        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                            <span class="font-bold text-sm text-white">Nolan</span>
+                            <span class="text-xs bg-red-500/20 text-red-300 px-2 py-0.5 rounded font-semibold">Assassin</span>
+                        </div>
+                        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                            <span class="font-bold text-sm text-white">Zhuxin</span>
+                            <span class="text-xs bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded font-semibold">Mage</span>
+                        </div>
+                        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                            <span class="font-bold text-sm text-white">Roger</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded font-semibold">Fighter/MM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- A Tier -->
+                <div class="bg-mlbb-card border border-cyan-500/30 rounded-2xl p-5 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-cyan-500 text-white font-black text-xs px-3 py-1 rounded-bl-xl">A TIER</div>
+                    <h3 class="font-extrabold text-lg text-cyan-400 mb-2 flex items-center"><i class="fa-solid fa-bolt mr-2"></i> Meta Utama</h3>
+                    <p class="text-xs text-slate-400 mb-4">Sangat kuat di pick jika hero S+ terkena ban.</p>
+                    <div class="space-y-2.5">
+                        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                            <span class="font-bold text-sm text-white">Ling</span>
+                            <span class="text-xs bg-red-500/20 text-red-300 px-2 py-0.5 rounded font-semibold">Assassin</span>
+                        </div>
+                        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                            <span class="font-bold text-sm text-white">Karrie</span>
+                            <span class="text-xs bg-yellow-500/20 text-yellow-300 px-2 py-0.5 rounded font-semibold">Marksman</span>
+                        </div>
+                        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                            <span class="font-bold text-sm text-white">Tigreal</span>
+                            <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-semibold">Tank</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- B Tier -->
+                <div class="bg-mlbb-card border border-purple-500/30 rounded-2xl p-5 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-purple-500 text-white font-black text-xs px-3 py-1 rounded-bl-xl">B TIER</div>
+                    <h3 class="font-extrabold text-lg text-purple-400 mb-2 flex items-center"><i class="fa-solid fa-shield mr-2"></i> Kompeten</h3>
+                    <p class="text-xs text-slate-400 mb-4">Efektif jika dikuasai dengan mekanik tinggi (One trick pony).</p>
+                    <div class="space-y-2.5">
+                        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                            <span class="font-bold text-sm text-white">Chou</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded font-semibold">Fighter</span>
+                        </div>
+                        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                            <span class="font-bold text-sm text-white">Harith</span>
+                            <span class="text-xs bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded font-semibold">Mage</span>
+                        </div>
+                        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                            <span class="font-bold text-sm text-white">Minotaur</span>
+                            <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-semibold">Tank</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- C Tier -->
+                <div class="bg-mlbb-card border border-slate-700 rounded-2xl p-5 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-slate-700 text-slate-300 font-black text-xs px-3 py-1 rounded-bl-xl">C TIER</div>
+                    <h3 class="font-extrabold text-lg text-slate-300 mb-2 flex items-center"><i class="fa-solid fa-circle-exclamation mr-2"></i> Situasional</h3>
+                    <p class="text-xs text-slate-400 mb-4">Hanya bagus jika dicocokkan dengan draft komposisi tim tertentu.</p>
+                    <div class="space-y-2.5">
+                        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                            <span class="font-bold text-sm text-white">Layla</span>
+                            <span class="text-xs bg-yellow-500/20 text-yellow-300 px-2 py-0.5 rounded font-semibold">Marksman</span>
+                        </div>
+                        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                            <span class="font-bold text-sm text-white">Nana</span>
+                            <span class="text-xs bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded font-semibold">Mage</span>
+                        </div>
+                        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                            <span class="font-bold text-sm text-white">Balmond</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded font-semibold">Fighter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="py-16 md:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="relative bg-gradient-to-r from-cyan-950 via-slate-900 to-purple-950 border border-cyan-500/30 rounded-3xl p-8 sm:p-12 shadow-2xl overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="relative z-10 space-y-6 max-w-2xl mx-auto">
+                <div class="w-16 h-16 bg-cyan-500/20 border border-cyan-500/40 rounded-2xl mx-auto flex items-center justify-center text-cyan-400 text-2xl shadow-lg">
+                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                </div>
+                
+                <h2 class="text-3xl sm:text-4xl font-black text-white">Download Web Gaming Season 42</h2>
+                
+                <p class="text-slate-300 text-sm sm:text-base">
+                    Ingin akses panduan counter hero dan meta tanpa internet? Download aplikasi web (PWA / APK Simulation) resmi dari <span class="text-cyan-400 font-bold">@villains_starboy</span> sekarang juga!
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+                    <button onclick="openDownloadModal()" class="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold px-8 py-4 rounded-2xl shadow-xl shadow-cyan-500/30 transition flex items-center justify-center space-x-3">
+                        <i class="fa-solid fa-download text-lg"></i>
+                        <span>Download APK Web S42 (18.5 MB)</span>
+                    </button>
+                    <a href="https://www.tiktok.com/@villains_starboy?" target="_blank" class="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-bold px-8 py-4 rounded-2xl transition flex items-center justify-center space-x-3">
+                        <i class="fa-brands fa-tiktok text-cyan-400 text-lg"></i>
+                        <span>Follow TikTok Official</span>
+                    </a>
+                </div>
+
+                <p class="text-xs text-slate-500">Kompatibel dengan Android, iOS, Windows, dan MacOS (Progressive Web App).</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-mlbb-card border-t border-mlbb-border py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-cyan-500 flex items-center justify-center font-bold text-white">S42</div>
+                        <span class="text-lg font-black tracking-wider text-white">MLBB SEASON 42 HUB</span>
+                    </div>
+                    <p class="text-slate-400 text-sm max-w-sm">
+                        Portal informasi dan counter hero terlengkap Mobile Legends Season 42. Dibangun khusus untuk membantu player mencapai Mythic Glory dengan mudah.
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold text-sm tracking-wider uppercase">Menu Cepat</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="#hero" class="hover:text-cyan-400 transition">Beranda Utama</a></li>
+                        <li><a href="#counters" class="hover:text-cyan-400 transition">Daftar Counter Hero</a></li>
+                        <li><a href="#tierlist" class="hover:text-cyan-400 transition">Meta Tier List S42</a></li>
+                        <li><a href="#download" class="hover:text-cyan-400 transition">Download Web App</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold text-sm tracking-wider uppercase">Official Social Media</h4>
+                    <p class="text-xs text-slate-400">Ikuti terus update video gameplay dan tips tier list harian di TikTok resmi kami:</p>
+                    <div>
+                        <a href="https://www.tiktok.com/@villains_starboy?" target="_blank" class="inline-flex items-center space-x-3 bg-slate-900 hover:bg-slate-800 text-white px-4 py-3 rounded-xl border border-slate-700 transition shadow-lg group">
+                            <div class="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition">
+                                <i class="fa-brands fa-tiktok text-base"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-slate-400 font-medium">TikTok Resmi</span>
+                                <span class="text-sm font-bold text-white">@villains_starboy</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+                <p>&copy; 2026 MLBB Season 42 Hub. All rights reserved. Not officially endorsed by Moonton.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="https://www.tiktok.com/@villains_starboy?" target="_blank" class="hover:text-cyan-400 transition"><i class="fa-brands fa-tiktok text-lg"></i></a>
+                    <a href="https://www.tiktok.com/@villains_starboy?" target="_blank" class="hover:text-cyan-400 transition"><i class="fa-brands fa-youtube text-lg"></i></a>
+                    <a href="https://www.tiktok.com/@villains_starboy?" target="_blank" class="hover:text-cyan-400 transition"><i class="fa-brands fa-instagram text-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="downloadModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden">
+        <div class="bg-mlbb-card border border-mlbb-border rounded-3xl p-6 sm:p-8 max-w-md w-full mx-4 shadow-2xl relative space-y-6">
+            <button onclick="closeDownloadModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-900 w-8 h-8 rounded-full flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center space-y-3">
+                <div class="w-16 h-16 bg-cyan-500/20 border border-cyan-500/40 rounded-2xl mx-auto flex items-center justify-center text-cyan-400 text-2xl">
+                    <i class="fa-solid fa-cloud-arrow-down animate-bounce"></i>
+                </div>
+                <h3 class="text-2xl font-black text-white">Download Web Gaming S42</h3>
+                <p class="text-xs text-slate-400">Pilih format unduhan aplikasi web counter hero Mobile Legends Season 42.</p>
+            </div>
+
+            <div class="space-y-3">
+                <button onclick="simulateDownload('MLBB_Season42_Web_v1.0.apk')" class="w-full bg-slate-900 hover:bg-slate-800 border border-slate-700 p-4 rounded-xl flex items-center justify-between transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-green-500/20 text-green-400 flex items-center justify-center"><i class="fa-brands fa-android text-xl"></i></div>
+                        <div class="text-left">
+                            <span class="block text-sm font-bold text-white group-hover:text-cyan-400 transition">Android APK (PWA)</span>
+                            <span class="text-xs text-slate-400">Versi 1.0 (18.5 MB)</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-download text-slate-400 group-hover:text-cyan-400"></i>
+                </button>
+
+                <button onclick="simulateDownload('MLBB_Season42_Desktop.zip')" class="w-full bg-slate-900 hover:bg-slate-800 border border-slate-700 p-4 rounded-xl flex items-center justify-between transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center"><i class="fa-solid fa-desktop text-xl"></i></div>
+                        <div class="text-left">
+                            <span class="block text-sm font-bold text-white group-hover:text-cyan-400 transition">Desktop App Package</span>
+                            <span class="text-xs text-slate-400">Windows / MacOS (ZIP)</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-download text-slate-400 group-hover:text-cyan-400"></i>
+                </button>
+            </div>
+
+            <div id="downloadProgressContainer" class="hidden space-y-2">
+                <div class="flex justify-between text-xs text-slate-400">
+                    <span id="downloadStatusText">Mengunduh file...</span>
+                    <span id="downloadPercent">0%</span>
+                </div>
+                <div class="w-full bg-slate-900 rounded-full h-2.5 overflow-hidden border border-slate-800">
+                    <div id="progressBar" class="bg-gradient-to-r from-cyan-500 to-purple-600 h-2.5 rounded-full w-0 transition-all duration-300"></div>
+                </div>
+            </div>
+
+            <div class="pt-2 text-center">
+                <a href="https://www.tiktok.com/@villains_starboy?" target="_blank" class="text-xs text-cyan-400 hover:underline font-medium">
+                    <i class="fa-brands fa-tiktok mr-1"></i> Jangan lupa follow TikTok @villains_starboy
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-300 bg-slate-900 border border-cyan-500 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div>
+            <h5 class="font-bold text-sm" id="toastTitle">Berhasil!</h5>
+            <p class="text-xs text-slate-400" id="toastDesc">Simulasi download web berhasil dimulai.</p>
+        </div>
+    </div>
+
+    <script>
+        // Hero Counter Database Season 42
+        const heroDatabase = [
+            {
+                name: "Fanny",
+                role: "Assassin",
+                icon: "fa-solid fa-bolt",
+                color: "text-red-400",
+                counters: [
+                    { name: "Khufra", reason: "Skill 2 Bouncing Ball menghentikan kabel Fanny dengan sangat efektif." },
+                    { name: "Minsitthar", reason: "Ultimate King's Calling menutup semua mobilitas kabel Fanny dalam area." },
+                    { name: "Sabre", reason: "Instan burst damage lock langsung mematikan sebelum Fanny sempat terbang." }
+                ]
+            },
+            {
+                name: "Ling",
+                role: "Assassin",
+                icon: "fa-solid fa-wind",
+                color: "text-red-400",
+                counters: [
+                    { name: "Minsitthar", reason: "Area ultimate mencegah Ling mendarat dan menggunakan skill mobilitasnya." },
+                    { name: "Ruby", reason: "CC chain bertubi-tubi membuat Ling langsung terjatuh dari dinding." },
+                    { name: "Phoveus", reason: "Skill pasif otomatis mendeteksi dan menyerang Ling saat melakukan dash." }
+                ]
+            },
+            {
+                name: "Zhuxin",
+                role: "Mage",
+                icon: "fa-solid fa-fire-flame-curved",
+                color: "text-purple-400",
+                counters: [
+                    { name: "Lancelot", reason: "Skill 1 & 2 memberikan免疫 (iframe) terhadap lingkaran kontrol Zhuxin." },
+                    { name: "Helcurt", reason: "Silence mendadak menghentikan casting area lantern Zhuxin." },
+                    { name: "Aamon", reason: "Invisible state membuat Zhuxin kesulitan melakukan lock target." }
+                ]
+            },
+            {
+                name: "Nolan",
+                role: "Assassin",
+                icon: "fa-solid fa-shield-halved",
+                color: "text-red-400",
+                counters: [
+                    { name: "Akai", reason: "Ultimate Heavy Spin mendorong Nolan keluar dari area dimensional rift miliknya." },
+                    { name: "Martis", reason: "Immunity dari skill 2 mengabaikan efek crowd control dan damage Nolan." },
+                    { name: "Minotaur", reason: "Instant tank cc area membuat Nolan tidak bisa bebas melakukan combo." }
+                ]
+            },
+            {
+                name: "Karrie",
+                role: "Marksman",
+                icon: "fa-solid fa-crosshairs",
+                color: "text-yellow-400",
+                counters: [
+                    { name: "Lesley", icon: "fa-solid fa-crosshairs", reason: "Burst true damage jarak jauh menghabisi Karrie sebelum sempat mendekat." },
+                    { name: "Lolita", reason: "Shield (Guardian's Bulwark) memantulkan semua proyektil basic attack Karrie." },
+                    { name: "Belerick", reason: "Pasif pantulan damage membuat Karrie mati terkena damage sendiri." }
+                ]
+            },
+            {
+                name: "Cici",
+                role: "Fighter",
+                icon: "fa-solid fa-dice",
+                color: "text-blue-400",
+                counters: [
+                    { name: "Phoveus", reason: "Cici terus melompat-lompat sehingga memicu skill ultimate Phoveus terus menerus." },
+                    { name: "Argus", reason: "Immortal ultimate membuat Argus mudah membalikkan keadaan saat di-kite Cici." },
+                    { name: "Kaja", reason: "Ultimate Divine Judgment mengunci Cici agar tidak bisa bergerak dan melompat." }
+                ]
+            },
+            {
+                name: "Tigreal",
+                role: "Tank",
+                icon: "fa-solid fa-shield-virus",
+                color: "text-emerald-400",
+                counters: [
+                    { name: "Valir", reason: "Skill 2 dan ultimate menghapus dan mencegah Tigreal mendekat untuk Flicker-Ult." },
+                    { name: "Diggie", reason: "Ultimate Time Journey memberikan purify massal yang menggagalkan kombo Tigreal." },
+                    { name: "Akai", reason: "Bisa mendorong Tigreal menjauh saat sedang melakukan channeling ultimate." }
+                ]
+            },
+            {
+                name: "Angela",
+                role: "Support",
+                icon: "fa-solid fa-heart-pulse",
+                color: "text-pink-400",
+                counters: [
+                    { name: "Bane", reason: "Burst damage area yang besar dapat meratakan target yang dirasuki Angela." },
+                    { name: "Valir", reason: "Efek burn terus menerus mencegah Angela melakukan regen atau rotasi aman." },
+                    { name: "Jawhead", reason: "Eject lempar Angela keluar dari rekan tim yang sedang sekarat." }
+                ]
+            }
+        ];
+
+        let currentRole = 'All';
+
+        // Render Hero Grid
+        function renderHeroes(heroesToRender) {
+            const grid = document.getElementById('heroGrid');
+            grid.innerHTML = '';
+
+            if (heroesToRender.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-mlbb-card border border-mlbb-border rounded-2xl">
+                        <i class="fa-solid fa-face-sad-tear text-4xl text-slate-500 mb-3"></i>
+                        <h3 class="text-lg font-bold text-white">Hero Tidak Ditemukan</h3>
+                        <p class="text-sm text-slate-400">Coba kata kunci lain atau pilih role yang berbeda.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            heroesToRender.forEach(hero => {
+                let countersHtml = hero.counters.map(c => `
+                    <div class="bg-slate-900/80 border border-slate-800 p-2.5 rounded-xl flex items-start space-x-3">
+                        <div class="w-7 h-7 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0 font-bold text-xs">
+                            <i class="fa-solid fa-shield-cat"></i>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold text-white">${c.name}</span>
+                            <span class="text-[11px] text-slate-400 leading-tight">${c.reason}</span>
+                        </div>
+                    </div>
+                `).join('');
+
+                let card = document.createElement('div');
+                card.className = 'bg-mlbb-card border border-mlbb-border rounded-2xl p-5 shadow-xl hover:border-cyan-500/50 transition flex flex-col justify-between';
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center ${hero.color} text-xl shadow-md">
+                                    <i class="${hero.icon}"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-black text-lg text-white">${hero.name}</h3>
+                                    <span class="text-xs px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 font-semibold border border-slate-700">${hero.role}</span>
+                                </div>
+                            </div>
+                            <span class="text-xs bg-red-500/10 text-red-400 border border-red-500/30 px-2.5 py-1 rounded-lg font-bold">S42 Target</span>
+                        </div>
+
+                        <div class="space-y-2 mb-4">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">Rekomendasi Counter Terbaik:</span>
+                            ${countersHtml}
+                        </div>
+                    </div>
+
+                    <a href="https://www.tiktok.com/@villains_starboy?" target="_blank" class="w-full mt-2 bg-slate-900 hover:bg-slate-800 text-cyan-400 border border-slate-800 hover:border-cyan-500/40 text-xs font-bold py-2.5 rounded-xl transition text-center block">
+                        <i class="fa-brands fa-tiktok mr-1"></i> Tonton Review Video di TikTok
+                    </a>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter Logic
+        function filterHeroes() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = heroDatabase.filter(hero => {
+                const matchName = hero.name.toLowerCase().includes(query) || hero.counters.some(c => c.name.toLowerCase().includes(query));
+                const matchRole = currentRole === 'All' || hero.role === currentRole;
+                return matchName && matchRole;
+            });
+            renderHeroes(filtered);
+        }
+
+        function setRoleFilter(role) {
+            currentRole = role;
+            document.querySelectorAll('.role-btn').forEach(btn => {
+                if (btn.textContent.trim() === role || (role === 'All' && btn.textContent.trim() === 'Semua')) {
+                    btn.className = 'role-btn active px-4 py-2 rounded-xl text-xs font-bold bg-cyan-500 text-white transition shadow-md';
+                } else {
+                    btn.className = 'role-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition';
+                }
+            });
+            filterHeroes();
+        }
+
+        // Download Modal Functions
+        function openDownloadModal() {
+            document.getElementById('downloadModal').classList.remove('hidden');
+        }
+
+        function closeDownloadModal() {
+            document.getElementById('downloadModal').classList.add('hidden');
+            document.getElementById('downloadProgressContainer').classList.add('hidden');
+            document.getElementById('progressBar').style.width = '0%';
+        }
+
+        function simulateDownload(filename) {
+            const progressContainer = document.getElementById('downloadProgressContainer');
+            const progressBar = document.getElementById('progressBar');
+            const downloadPercent = document.getElementById('downloadPercent');
+            const statusText = document.getElementById('downloadStatusText');
+
+            progressContainer.classList.remove('hidden');
+            statusText.textContent = `Mengunduh ${filename}...`;
+            
+            let progress = 0;
+            let interval = setInterval(() => {
+                progress += Math.floor(Math.random() * 15) + 5;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    statusText.textContent = 'Unduhan Selesai!';
+                    showToast('Berhasil Download!', `File ${filename} berhasil disimpan.`);
+                    setTimeout(() => {
+                        closeDownloadModal();
+                    }, 1500);
+                }
+                progressBar.style.width = progress + '%';
+                downloadPercent.textContent = progress + '%';
+            }, 200);
+        }
+
+        // Toast Notification Function
+        function showToast(title, desc) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastDesc').textContent = desc;
+
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 3500);
+        }
+
+        // Initial Load
+        window.onload = function() {
+            renderHeroes(heroDatabase);
+        };
+    </script>
+</body>
+</html>
